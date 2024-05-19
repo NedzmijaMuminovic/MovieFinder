@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="back-button">
+        <a href="#" (click)="goBack()">Back</a>
+    </div>
+    <div class="trailer">
+        <ng-container *ngIf="trailerUrl; else coverImage">
+            <iframe [src]="trailerUrl" frameborder="0" allowfullscreen></iframe>
+        </ng-container>
+        <ng-template #coverImage>
+            <img *ngIf="coverImageUrl" [src]="coverImageUrl" alt="{{ title }}">
+        </ng-template>
+    </div>
+    <div class="description">
+        <h2>{{ title }}</h2>
+        <p>{{ description }}</p>
+    </div>
+</div>

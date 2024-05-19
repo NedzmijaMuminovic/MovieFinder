@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="toggle-buttons">
+    <button class="toggle-button" (click)="toggleView(true)" [class.active]="showMovies">Movies</button>
+    <button class="toggle-button" (click)="toggleView(false)" [class.active]="!showMovies">TV Shows</button>
+  </div>
+  <div class="search">
+    <input type="text" placeholder="Search..." class="search-input" [formControl]="searchControl">
+  </div>
+
+  <div class="search-results">
+    <div class="movies" *ngIf="searchControl.value && searchControl.value.length >= 3">
+      <div *ngIf="searchResults.length === 0" class="no-results-message">No results found.</div>
+      <div class="movie" *ngFor="let result of searchResults" (click)="navigateToDetails(result);">
+        <div class="poster-container">
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + result.poster_path" [alt]="result.title || result.name">
+        </div>
+        <div class="permanent-title">{{ result.title || result.name }}</div>
+        <div class="description-overlay">
+          <h3>{{ result.title || result.name }}</h3>
+          <p>{{ result.overview }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showMovies; else tvShowsContent">
+    <div class="movies" *ngIf="!(searchControl.value && searchControl.value.length >= 3)">
+      <div class="movie" *ngFor="let movie of movies" (click)="navigateToDetails(movie)">
+        <div class="poster-container">
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="{{ movie.title }}">
+        </div>
+        <div class="permanent-title">{{ movie.title }}</div>
+        <div class="description-overlay">
+          <h3>{{ movie.title }}</h3>
+          <p>{{ movie.overview }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #tvShowsContent>
+    <div class="tv-shows" *ngIf="!(searchControl.value && searchControl.value.length >= 3)">
+      <div class="tv-show" *ngFor="let show of tvShows" (click)="navigateToDetails(show)">
+        <div class="poster-container">
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + show.poster_path" alt="{{ show.name }}">
+        </div>
+        <div class="permanent-title">{{ show.name }}</div>
+        <div class="description-overlay">
+          <h3>{{ show.name }}</h3>
+          <p>{{ show.overview }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

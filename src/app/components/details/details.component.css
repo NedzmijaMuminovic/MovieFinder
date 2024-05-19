@@ -1,0 +1,59 @@
+.back-button {
+    margin-bottom: 20px;
+}
+
+.back-button a {
+    text-decoration: none;
+    background-color: #706fd3;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button a:hover {
+    background-color: #5f4b8b;
+}
+
+.trailer {
+    position: relative;
+    width: 100%;
+    max-width: 1190px;
+    height: 450px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 5px solid #485168;
+    border-radius: 10px;
+}
+
+.trailer iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.trailer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trailer img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.description {
+    margin-top: 20px;
+}
+
+.description h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.description p {
+    font-size: 16px;
+    line-height: 1.5;
+}
